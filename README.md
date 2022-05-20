@@ -155,7 +155,7 @@ e.g:
 
 ![image](https://user-images.githubusercontent.com/194400/168495559-1f8649fa-43f7-4f16-a0a2-c09561e10318.png)
 
-#### 6.1
+#### 6.1
 
 Once you've added your `ssh key` to your user on the `Gitea` server,
 Update the '.ssh/authorized_keys' file by visiting:
@@ -175,6 +175,8 @@ In your terminal run the following command:
 ssh -T git@gitea-server.fly.dev
 ```
 
+You should see output similar to the following:
+
 ```sh
 Hi there, nelsonic! You've successfully authenticated with the key named MBP 2022,
 but Gitea does not provide shell access.
@@ -183,7 +185,8 @@ If this is unexpected, please log in with password and setup Gitea under another
 
 Create a basic repo, e.g:
 https://gitea-server.fly.dev/myorg/public-repo
-clone it:
+
+`clone` it to your `localhost`:
 
 ```sh
 git clone git@gitea-server.fly.dev:myorg/public-repo.git
