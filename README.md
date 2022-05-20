@@ -311,5 +311,5 @@ feel free to reach out by opening an issue:
 - Gitea Configuration Cheat Sheet:
   https://docs.gitea.io/en-us/config-cheat-sheet/
 
-[![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat-square)](https://github.com/dwyl/gitea-demo/issues)
-[![HitCount](http://hits.dwyl.com/dwyl/gitea-demo.svg)](http://hits.dwyl.com/dwyl/gitea-demo)
+[![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat-square)](https://github.com/dwyl/gitea-server/issues)
+[![HitCount](http://hits.dwyl.com/dwyl/gitea-server.svg)](http://hits.dwyl.com/dwyl/gitea-server)
