@@ -1,0 +1,48 @@
+# fly.toml file generated for gitea-server on 2022-05-14T15:27:31+01:00
+app = "gitea-server"
+
+kill_timeout = 5
+
+[build]
+  image = "gitea/gitea:latest" # latest is the most recent stable release
+
+[env]
+  GITEA__database__DB_TYPE="sqlite3"
+  GITEA__database__PATH="/data/gitea/gitea.db"
+  GITEA__server__DOMAIN="gitea-server.fly.dev"
+  GITEA__server__SSH_DOMAIN="gitea-server.fly.dev"
+  GITEA__server__ROOT_URL="https://gitea-server.fly.dev"
+  GITEA__server__REDIRECT_OTHER_PORT="true" # listen on port 80, and redirect to "ROOT_URL"
+  GITEA__security__INSTALL_LOCK="true" # Don't show installer
+  # GITEA__service__DISABLE_REGISTRATION="true" # TODO: uncomment once you have created your first user
+
+# persist data
+[[mounts]]
+  destination = "/data"
+  source = "gitea_data"
+
+# ssh traffic
+[[services]]
+  internal_port = 22
+  protocol = "tcp"
+  [[services.ports]]
+    port = 22
+
+# for http->https redirect
+[[services]]
+  internal_port = 80
+  protocol = "tcp"
+
+  [[services.ports]]
+    handlers = ["http"]
+    port = 80
+
+# https traffic
+[[services]]
+  internal_port = 3000
+  protocol = "tcp"
+
+  [[services.ports]]
+    handlers = ["tls", "http"]
+    port = 443
+
