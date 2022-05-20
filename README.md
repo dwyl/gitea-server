@@ -126,6 +126,155 @@ Visit your newly deployed instance
 and configure it as desired:
 https://gitea-server.fly.dev
 
+### 6. Add SSH Key
+
+Add your `public` `ssh` key:
+https://gitea-server.fly.dev/user/settings/keys
+
+e.g:
+
+![image](https://user-images.githubusercontent.com/194400/168495559-1f8649fa-43f7-4f16-a0a2-c09561e10318.png)
+
+#### 6.1
+
+Once you've added your `ssh key` to your user on the `Gitea` server,
+Update the '.ssh/authorized_keys' file by visiting:
+https://gitea-server.fly.dev/admin
+
+![gitea-server-refresh-ssh-authorized_keys](https://user-images.githubusercontent.com/194400/169619901-14d8fbac-ecf8-4bb3-85d4-fa805134bc1f.png)
+
+You should see the following message confirming the request is being executed:
+
+![image](https://user-images.githubusercontent.com/194400/169619944-d333eb03-509a-4cfc-8d5e-4224085b1a79.png)
+
+#### 6.2 Test the `ssh` Connection
+
+In your terminal run the following command:
+
+```sh
+ssh -T git@gitea-server.fly.dev
+```
+
+```sh
+Hi there, nelsonic! You've successfully authenticated with the key named MBP 2022,
+but Gitea does not provide shell access.
+If this is unexpected, please log in with password and setup Gitea under another user.
+```
+
+Create a basic repo, e.g:
+https://gitea-server.fly.dev/myorg/public-repo
+clone it:
+
+```sh
+git clone git@gitea-server.fly.dev:myorg/public-repo.git
+```
+
+Make a change to one of the files.
+Then `git add . && git commit -m 'file updated' && git push`
+
+`git push` (SSH) works as expected:
+
+https://gitea-server.fly.dev/myorg/public-repo
+![image](https://user-images.githubusercontent.com/194400/168496190-ac48b3de-2c65-406e-83af-dcc7cc570784.png)
+
+Now that you've confirmed you can access a `git` repo
+hosted on `gitea` server via your terminal
+you can already use your server as fully fledged `GitHub` backup or even _replacement_!
+But there's more to explore!
+
+### 7. Create Access Token (API Key)
+
+Visit:
+https://gitea-server.fly.dev/user/settings/applications
+and create a new **Access Tokens**.
+
+e.g:
+
+![image](https://user-images.githubusercontent.com/194400/169620530-765b0c15-e099-470e-b8c8-68c8967ed716.png)
+
+Once you have the access token,
+you can test it by running
+a cURL command to retrieve repo info:
+
+```sh
+ curl 'https://gogs-server.fly.dev/api/v1/repos/myorg/public-repo?token=youraccesstokenhere'
+```
+
+Response:
+
+```json
+{
+  "id": 3,
+  "owner": {
+    "id": 3,
+    "login": "myorg",
+    "full_name": "",
+    "email": "",
+    "avatar_url": "https://gitea-server.fly.dev/avatars/b665280652d01c4679777afd9861170c",
+    "language": "",
+    "is_admin": false,
+    "last_login": "0001-01-01T00:00:00Z",
+    "created": "2022-05-15T21:21:42Z",
+    "restricted": false,
+    "active": false,
+    "prohibit_login": false,
+    "location": "",
+    "website": "",
+    "description": "",
+    "visibility": "public",
+    "followers_count": 0,
+    "following_count": 0,
+    "starred_repos_count": 0,
+    "username": "myorg"
+  },
+  "name": "public-repo",
+  "full_name": "myorg/public-repo",
+  "description": "",
+  "empty": false,
+  "private": false,
+  "fork": false,
+  "template": false,
+  "parent": null,
+  "mirror": false,
+  "size": 104,
+  "html_url": "https://gitea-server.fly.dev/myorg/public-repo",
+  "ssh_url": "git@gitea-server.fly.dev:myorg/public-repo.git",
+  "clone_url": "https://gitea-server.fly.dev/myorg/public-repo.git",
+  "original_url": "",
+  "website": "",
+  "stars_count": 0,
+  "forks_count": 0,
+  "watchers_count": 1,
+  "open_issues_count": 0,
+  "open_pr_counter": 0,
+  "release_counter": 0,
+  "default_branch": "master",
+  "archived": false,
+  "created_at": "2022-05-15T21:40:54Z",
+  "updated_at": "2022-05-15T21:40:57Z",
+  "permissions": {
+    "admin": true,
+    "push": true,
+    "pull": true
+  },
+  "has_issues": true
+}
+```
+
+> **Note**: this API response is truncated for brevity,
+> For the complete API docs,
+> see: https://try.gitea.io/api/swagger#/repository
+
+## Questions?
+
+It wasn't all plain sailing for us when we first tried to setup our `gitea-server`.
+We wrote this guide so that others wouldn't suffer our pain.
+
+If you get stuck
+in your deployment quest,
+feel free to reach out by opening an issue:
+[gitea-server/issues](https://github.com/dwyl/gitea-server/issues)
+
 ## Recommended Reading
 
 - Running Gitea on fly.io:
