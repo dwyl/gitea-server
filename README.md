@@ -25,6 +25,8 @@ https://fly.io/docs/flyctl/ <br />
 https://fly.io/docs/flyctl/auth-signup/ <br />
 **c.** Basic understanding of deployment. <br />
 
+<br />
+
 ### 1. Create a Fly App
 
 Create a Fly.io App
@@ -39,6 +41,8 @@ That will generate a
 [`fly.toml`](https://github.com/dwyl/gitea-server/blob/main/fly.toml)
 file.
 
+<br />
+
 ### 2. Create a Volume for Data Storage
 
 `Gitea` will store `git` repo files/data on a persistent storage volume.
@@ -47,6 +51,8 @@ Create it with the following command:
 ```sh
 flyctl volumes create gitea_data --size 1 --app gitea-server
 ```
+
+<br />
 
 ### 3. Update the `fly.toml` File
 
@@ -111,6 +117,8 @@ See:
 [`commits/54d77542`](https://github.com/dwyl/gitea-server/pull/2/commits/54d77542ada8f1bda5a107f831c9a1acfa583160)
 for the changes made.
 
+<br />
+
 ### 4. Deploy!
 
 Once you have saved the `fly.toml` file,
@@ -120,11 +128,23 @@ deploy it with the following command:
 LOG_LEVEL=debug fly deploy --verbose
 ```
 
+<br />
+
 ### 5. Configure
 
 Visit your newly deployed instance
 and configure it as desired:
 https://gitea-server.fly.dev
+
+If you need to _manually_ configure anything,
+the `gitea` configuration file
+is located at
+`/data/gitea/conf/app.ini`
+on the gitea-server Fly app.
+
+> **Note**: make a backup of your file before you make any changes!!
+
+<br />
 
 ### 6. Add SSH Key
 
@@ -181,6 +201,8 @@ Now that you've confirmed you can access a `git` repo
 hosted on `gitea` server via your terminal
 you can already use your server as fully fledged `GitHub` backup or even _replacement_!
 But there's more to explore!
+
+<br />
 
 ### 7. Create Access Token (API Key)
 
@@ -265,6 +287,8 @@ Response:
 > For the complete API docs,
 > see: https://try.gitea.io/api/swagger#/repository
 
+<br />
+
 ## Questions?
 
 It wasn't all plain sailing for us when we first tried to setup our `gitea-server`.
@@ -275,6 +299,8 @@ in your deployment quest,
 feel free to reach out by opening an issue:
 [gitea-server/issues](https://github.com/dwyl/gitea-server/issues)
 
+<br />
+
 ## Recommended Reading
 
 - Running Gitea on fly.io:
@@ -282,6 +308,8 @@ feel free to reach out by opening an issue:
   recently written/published by
   [**`@techknowlogick`**](https://github.com/techknowlogick)
   a core contributor to Gitea.
+- Gitea Configuration Cheat Sheet:
+  https://docs.gitea.io/en-us/config-cheat-sheet/
 
 [![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat-square)](https://github.com/dwyl/gitea-demo/issues)
 [![HitCount](http://hits.dwyl.com/dwyl/gitea-demo.svg)](http://hits.dwyl.com/dwyl/gitea-demo)
