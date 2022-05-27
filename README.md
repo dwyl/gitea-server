@@ -12,10 +12,13 @@ for **`Gitea`** on
 
 </div>
 
-## How?
+## What? 
 
 This is a step-by-step guide for recreating our server.
 If you find it useful, please ⭐
+
+
+## How?
 
 ### 0. Prerequisites
 
@@ -155,10 +158,10 @@ e.g:
 
 ![image](https://user-images.githubusercontent.com/194400/168495559-1f8649fa-43f7-4f16-a0a2-c09561e10318.png)
 
-#### 6.1
+#### 6.1 Update the `.ssh/authorized_keys` file
 
 Once you've added your `ssh key` to your user on the `Gitea` server,
-Update the '.ssh/authorized_keys' file by visiting:
+Update the `.ssh/authorized_keys` file by visiting:
 https://gitea-server.fly.dev/admin
 
 ![gitea-server-refresh-ssh-authorized_keys](https://user-images.githubusercontent.com/194400/169619901-14d8fbac-ecf8-4bb3-85d4-fa805134bc1f.png)
@@ -178,7 +181,8 @@ ssh -T git@gitea-server.fly.dev
 You should see output similar to the following:
 
 ```sh
-Hi there, nelsonic! You've successfully authenticated with the key named MBP 2022,
+Hi there, nelsonic!
+You've successfully authenticated with the key named MBP 2022,
 but Gitea does not provide shell access.
 If this is unexpected, please log in with password and setup Gitea under another user.
 ```
