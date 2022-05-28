@@ -12,10 +12,13 @@ for **`Gitea`** on
 
 </div>
 
-## How?
+## What? 
 
 This is a step-by-step guide for recreating our server.
 If you find it useful, please ⭐
+
+
+## How?
 
 ### 0. Prerequisites
 
@@ -158,7 +161,7 @@ e.g:
 #### 6.1 Update the `.ssh/authorized_keys` file
 
 Once you've added your `ssh key` to your user on the `Gitea` server,
-Update the ``.ssh/authorized_keys` file by visiting:
+Update the `.ssh/authorized_keys` file by visiting:
 https://gitea-server.fly.dev/admin
 
 ![gitea-server-refresh-ssh-authorized_keys](https://user-images.githubusercontent.com/194400/169619901-14d8fbac-ecf8-4bb3-85d4-fa805134bc1f.png)
